@@ -243,7 +243,72 @@ export const defaultLargeTheme: DashboardTheme = {
   },
 };
 
+const MOSKINET_TYPOGRAPHY: ThemeTypography = {
+  ...DEFAULT_TYPOGRAPHY,
+  fontSans: `"Montserrat", ${SYSTEM_SANS}`,
+  fontMono: `"JetBrains Mono", ${SYSTEM_MONO}`,
+  fontUrl:
+    "https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap",
+};
+
+/** Moski.net brand — logo emerald (#0F3624) ground with logo gold (#C58B3B) accents. */
+export const moskinetTheme: DashboardTheme = {
+  name: "moskinet",
+  label: "Moski.net",
+  description: "Moski.net emerald and gold — the brand trading desk",
+  palette: {
+    background: { hex: "#07160F", alpha: 1 },
+    midground: { hex: "#E8C68A", alpha: 1 },
+    foreground: { hex: "#ffffff", alpha: 0 },
+    warmGlow: "rgba(197, 139, 59, 0.35)",
+    noiseOpacity: 0.7,
+  },
+  typography: MOSKINET_TYPOGRAPHY,
+  layout: { ...DEFAULT_LAYOUT, radius: "0.75rem" },
+  terminalBackground: "#07160F",
+  colorOverrides: {
+    success: "#4CBB7F",
+    warning: "#E0A34A",
+    destructive: "#E5615C",
+  },
+  seriesColors: {
+    inputTokenAccent: "#3FA672",
+    outputTokenAccent: "#C58B3B",
+  },
+  swatchColors: ["#0F3624", "#C58B3B", "#07160F"],
+};
+
+/** Moski.net light — emerald ink on the logo's cream canvas. */
+export const moskinetLightTheme: DashboardTheme = {
+  name: "moskinet-light",
+  label: "Moski.net Light",
+  description: "Light mode — Moski.net emerald ink and gold on cream",
+  palette: {
+    background: { hex: "#FAF7F1", alpha: 1 },
+    midground: { hex: "#0F3624", alpha: 1 },
+    foreground: { hex: "#0F3624", alpha: 0 },
+    warmGlow: "rgba(197, 139, 59, 0.16)",
+    noiseOpacity: 0,
+  },
+  typography: MOSKINET_TYPOGRAPHY,
+  layout: { ...DEFAULT_LAYOUT, radius: "0.75rem" },
+  terminalBackground: "#F4EFE4",
+  terminalForeground: "#0F3624",
+  colorOverrides: {
+    success: "#2E7D32",
+    warning: "#B45309",
+    destructive: "#C62828",
+  },
+  seriesColors: {
+    inputTokenAccent: "#0F3624",
+    outputTokenAccent: "#A8722A",
+  },
+  swatchColors: ["#0F3624", "#C58B3B", "#FAF7F1"],
+};
+
 export const BUILTIN_THEMES: Record<string, DashboardTheme> = {
+  moskinet: moskinetTheme,
+  "moskinet-light": moskinetLightTheme,
   default: defaultTheme,
   "default-large": defaultLargeTheme,
   "nous-blue": nousBlueTheme,

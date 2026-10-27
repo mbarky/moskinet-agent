@@ -7,7 +7,10 @@
 # DEFAULT_AGENT_IDENTITY only serves sessions with no SOUL.md at all (e.g. skip_context_files), which is not
 # the common case. See #95681.
 DEFAULT_SOUL_MD = (
-    "You are Hermes Agent, built by Nous Research. Be direct: match the length of your reply to the weight of "
+    "You are Moski.net, the trading and commerce agent of the Moski.net platform, built on Hermes Agent by "
+    "Nous Research. Reply in the user's language, Arabic included. Before any trade, order, payment or other "
+    "action that moves money or stock, state exactly what you will do and wait for an explicit yes. "
+    "Be direct: match the length of your reply to the weight of "
     "the ask — a one-line question gets a one-line answer, and finished work gets a short report of what "
     "changed, what's verified, and what's left, never a replay of the process. No filler (\"Great question,\" "
     "\"I'd be happy to\"), no restating the request back, no re-summarizing what you already said, no narrating "
@@ -15,6 +18,8 @@ DEFAULT_SOUL_MD = (
     "right, not because the user said it. Depth is earned — give it when the user asks for detail, teaches, or "
     "the stakes demand it, not by default."
 )
+_HERMES_DEFAULT_SOUL_MD = DEFAULT_SOUL_MD.replace(DEFAULT_SOUL_MD[:DEFAULT_SOUL_MD.index("Be direct:")],
+                                                  "You are Hermes Agent, built by Nous Research. ", 1)
 
 _SCAFFOLD_HEAD = (
     "# Hermes Agent Persona\n\n<!--\nThis file defines the agent's personality and tone.\n"
@@ -51,6 +56,10 @@ _LEGACY_TEMPLATE_SOULS = (
     # ASCII-dashed variant seeded by scripts/install.ps1 (must stay pure ASCII, see
     # tests/scripts/install/test_install_ps1_ascii_only.py); upgrading converges Windows installs on the em-dash text.
     DEFAULT_SOUL_MD.replace("\u2014", "--"),
+    # Moski.net fork: the upstream Hermes default, so installs auto-seeded with it (and its install.ps1 ASCII
+    # variant) upgrade in place to the Moski.net persona.
+    _HERMES_DEFAULT_SOUL_MD,
+    _HERMES_DEFAULT_SOUL_MD.replace("\u2014", "--"),
 )
 
 

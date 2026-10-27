@@ -617,10 +617,14 @@ export default function App() {
               >
                 <PluginSlot name="header-left" />
 
-                <Typography className="font-bold text-[1.125rem] leading-[0.95] tracking-[0.0525rem] text-midground uppercase">
-                  Hermes
-                  <br />
-                  Agent
+                <img
+                  src="/moskinet-mark.svg"
+                  alt=""
+                  aria-hidden="true"
+                  className="h-7 w-auto shrink-0"
+                />
+                <Typography className="font-extrabold text-[1.2rem] leading-none tracking-[0.01em] text-midground">
+                  Moski<span className="text-[#C58B3B]">.net</span>
                 </Typography>
               </div>
 

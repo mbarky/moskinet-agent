@@ -301,6 +301,8 @@ def mount_spa(application: FastAPI):
 
 # Built-in themes — label + description only; colors live in web/src/themes/presets.ts.
 _BUILTIN_DASHBOARD_THEMES = [
+    {"name": "moskinet",       "label": "Moski.net",       "description": "Moski.net emerald and gold — the brand trading desk"},
+    {"name": "moskinet-light", "label": "Moski.net Light", "description": "Light mode — Moski.net emerald ink and gold on cream"},
     {"name": "default",       "label": "Hermes Teal",         "description": "Classic dark teal — the canonical Hermes look"},
     {"name": "default-large", "label": "Hermes Teal (Large)", "description": "Hermes Teal with bigger fonts and roomier spacing"},
     {"name": "nous-blue",     "label": "Nous Blue",           "description": "Light mode — vivid Nous-blue accents on cream canvas"},

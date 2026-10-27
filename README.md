@@ -1,6 +1,18 @@
 <p align="center">
-  <img src="assets/banner.png" alt="Hermes Agent" width="100%">
+  <img src="brand/moskinet-banner.png" alt="Moski.net" width="100%">
 </p>
+
+# Moski.net Trading Agent ◆
+
+> **Moski.net** is a branded build of [Hermes Agent](https://github.com/NousResearch/hermes-agent) by Nous Research (MIT).
+> It ships the `moskinet` emerald/gold skin as the default for the CLI/TUI, desktop and web dashboard, a Moski.net
+> persona that answers in Arabic or English and confirms before any money-moving action, and brand assets in [`brand/`](brand/).
+> The `hermes` command, config and upstream docs below are unchanged.
+>
+> - Switch looks: `/skin moskinet` (CLI) · dashboard theme `moskinet` or `moskinet-light`
+> - Track upstream: `git fetch upstream && git merge upstream/main`
+
+---
 
 # Hermes Agent ☤
 <p align="center">

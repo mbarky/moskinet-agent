@@ -2059,6 +2059,7 @@ display:
   #   poseidon       — Sea-green/teal Olympian theme
   #   sisyphus       — Earthy stone-and-moss theme
   #   charizard      — Fiery orange dragon theme
+  #   moskinet       — Moski.net emerald/gold trading theme (Moski.net default)
   #
   # Custom skins: drop a YAML file in ~/.hermes/skins/<name>.yaml
   # Schema (all fields optional, missing values inherit from default):
@@ -2087,7 +2088,7 @@ display:
   #     prompt_symbol: "⚔"                  # Prompt symbol (bare token; renderers add trailing space)
   #   tool_prefix: "╎"                       # Tool output line prefix (default: ┊)
   #
-  skin: default
+  skin: moskinet
 
 # =============================================================================
 # Model Aliases — short names for /model command

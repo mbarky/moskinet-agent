@@ -339,7 +339,70 @@ _BUILTIN_SKINS: dict[str, dict[str, Any]] = {
 [#F29C38]⠀⠀⠀⠀⠀⠀⠀⠀⣰⡿⢿⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀[/]
 [#F29C38]⠀⠀⠀⠀⠀⠀⠀⣼⡟⠀⠀⢻⣧⠀⠀⠀⠀⠀⠀⠀⠀[/]
 [dim #7A3511]⠀⠀⠀⠀⠀⠀⠀tail flame lit⠀⠀⠀⠀⠀⠀⠀⠀[/]""",
-    }}
+    },
+    "moskinet": {
+        "name": "moskinet", "description": "Moski.net — emerald and gold trading desk",
+        # Dark-authored from the Moski.net logo: brand emerald #0F3624 carries the fills
+        # (too dark for text on a dark pole), brand gold #C58B3B the accents; a lifted
+        # emerald #3FA672 family stands in for the green on foreground roles.
+        "colors": {
+            "banner_border": "#C58B3B", "banner_title": "#E0B066", "banner_accent": "#C58B3B",
+            "banner_dim": "#6E8F7C", "banner_text": "#EDE6D8", "ui_accent": "#D9A44E",
+            "ui_label": "#8FC1A5", "ui_ok": "#4CBB7F", "ui_error": "#E5615C", "ui_warn": "#E0A34A",
+            "prompt": "#EDE6D8", "input_rule": "#3A7A58", "response_border": "#C58B3B",
+            "status_bar_bg": "#0F3624", "status_bar_text": "#E6DCC6",
+            "status_bar_strong": "#E0B066", "status_bar_dim": "#8FAF9C",
+            "status_bar_good": "#5CCB8E", "status_bar_warn": "#E0A34A", "status_bar_bad": "#E07B3A",
+            "status_bar_critical": "#F06A63", "session_label": "#C58B3B",
+            "session_border": "#4F7A63", "completion_menu_bg": "#0F3624",
+            "completion_menu_current_bg": "#1F5A3E", "selection_bg": "#2A6247",
+            "shell_dollar": "#C58B3B", "voice_status_bg": "#0F3624",
+            # GUI seeds for the desktop app (skinToDesktopTheme): app ground + body text.
+            "background": "#07160F", "ui_text": "#EDE6D8"},
+        # Light overlay: brand emerald becomes the ink, gold deepens to #A8722A for contrast
+        # on cream, and the fills flip to the logo's cream/parchment ground.
+        "light_colors": {
+            "banner_border": "#A8722A", "banner_title": "#0F3624", "banner_accent": "#A8722A",
+            "banner_dim": "#6B7F72", "banner_text": "#1E3A2C", "ui_accent": "#A8722A",
+            "ui_label": "#2E6B4B", "ui_ok": "#2E7D32", "ui_error": "#C62828", "ui_warn": "#B45309",
+            "prompt": "#0F3624", "input_rule": "#A8722A", "response_border": "#A8722A",
+            "session_label": "#2E6B4B", "session_border": "#9DB3A5",
+            "status_bar_bg": "#F1EADB", "status_bar_text": "#0F3624",
+            "status_bar_strong": "#8A5A1C", "status_bar_dim": "#5F7568",
+            "status_bar_good": "#2E7D32", "status_bar_warn": "#B45309", "status_bar_bad": "#C2410C",
+            "status_bar_critical": "#B91C1C", "shell_dollar": "#A8722A",
+            "completion_menu_bg": "#FAF7F1", "completion_menu_current_bg": "#EBDDC2",
+            "selection_bg": "#E3EFE6", "voice_status_bg": "#F1EADB"},
+        "spinner": {
+            "waiting_faces": ["(◆)", "(▲)", "(▼)", "(₥)", "(◇)"],
+            "thinking_faces": ["(◆)", "(▲)", "(▼)", "(⇅)", "(◇)"],
+            "thinking_verbs": [
+                "reading the tape", "scanning candles", "weighing the spread", "checking the book",
+                "sizing the position", "hedging exposure", "tracking the order", "routing the cart"],
+            "wings": _wings("◆", ("▲", "▼"), ("═", "═"), "◇")},
+        "branding": {
+            **_branding("Moski.net", "◆", "Trade well! ◆", prompt="M›"),
+            "agent_name": "Moski.net", "response_label": " ◆ Moski.net ",
+            "welcome": "Welcome to Moski.net! Type your message or /help for commands."},
+        "tool_prefix": "│",
+        "banner_logo": """[bold #5CC48D]███╗   ███╗ ██████╗ ███████╗██╗  ██╗██╗[/][bold #E8BE72]   ███╗   ██╗███████╗████████╗[/]
+[bold #4DB880]████╗ ████║██╔═══██╗██╔════╝██║ ██╔╝██║[/][bold #DDAE5E]   ████╗  ██║██╔════╝╚══██╔══╝[/]
+[#3FA672]██╔████╔██║██║   ██║███████╗█████╔╝ ██║[/][#D29E4C]   ██╔██╗ ██║█████╗     ██║   [/]
+[#35966A]██║╚██╔╝██║██║   ██║╚════██║██╔═██╗ ██║[/][#C58B3B]   ██║╚██╗██║██╔══╝     ██║   [/]
+[#2E8760]██║ ╚═╝ ██║╚██████╔╝███████║██║  ██╗██║[/][#B37D31]██╗██║ ╚████║███████╗   ██║   [/]
+[#277A56]╚═╝     ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝╚═╝[/][#A0702B]╚═╝╚═╝  ╚═══╝╚══════╝   ╚═╝   [/]""",
+        "banner_hero": """⠀⠀⠀⠀⠀⠀⠀[#C58B3B]⢀⣤⣶⣶⣶⣦⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀[/][#3FA672]⢀⣴⣾⣿⣿⣶⡄[/]
+⠀⠀⠀⠀⠀⠀⠀[#3FA672]⣾⣿⣿[/][#C58B3B]⣿⣿⣿⣿⣷⣄⠀⠀⠀⠀⠀[/][#3FA672]⢀⣴⣿⣿⣿⣿⣿⣿⣿[/]
+⠀⠀⠀⠀⠀⠀⠀[#3FA672]⣿⣿⣿⣿⣿[/][#C58B3B]⣿⣿⣿⣿⣷⣄⠀[/][#3FA672]⢀⣴⣿⣿⣿⣿⣿⣿⣿[/][#C58B3B]⣿⣿[/]
+⠀⠀⠀⠀⠀⠀⠀[#3FA672]⠛⠛⠻⣿⣿⣿⣿[/][#C58B3B]⣿⣿⣿⣿⣷[/][#3FA672]⣿⣿⣿⣿⣿⣿⣿[/][#C58B3B]⣿⣿⣿⣿[/]
+⠀⠀[#C58B3B]⠿⠿⠿[/][#3FA672]⢿⣿⣷⣄⠀⠈⠻⣿⣿⠋[/][#C58B3B]⠻⣿⣿⣿⣿⣿[/][#3FA672]⣿⣿⢿[/][#C58B3B]⣿⣿⣿⣿⣿[/][#3FA672]⣿[/]
+[#C58B3B]⢶⣶⣶⣶⡶[/][#3FA672]⠘⣿⣿⣿⣧⡀⠀⠙⠿⠀⠀[/][#C58B3B]⠈⢿⣿⣿⣿⠟[/][#3FA672]⠁[/][#C58B3B]⢸⣿⣿⣿[/][#3FA672]⣿⣿⣿[/]
+⠀⠀[#C58B3B]⢠⣶⣶⡆[/][#3FA672]⢹⣿⣿⣿⣿⣦⣀⡀⠀⠀⠀⠀[/][#C58B3B]⠙⠛⠁⠀⠀⢸⣿[/][#3FA672]⣿⣿⣿⣿⣿[/]
+⠀⠀⠀⠀⠀⠀⠀[#3FA672]⣛⣛⠛⠛⣛⣛⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀[/][#C58B3B]⠈[/][#3FA672]⢿⣿⣿⣿⣿⣿[/]
+⠀⠀⠀⠀⠀⠀⠀[#C58B3B]⢿⡿⠀⠘⢿⠿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[/][#3FA672]⠙⢿⣿⣿⠟[/]
+[dim #3FA672]⠀⠀⠀⠀⠀⠀⠀⠀trade · track · deliver⠀⠀⠀⠀⠀⠀⠀[/]""",
+    },
+}
 
 _active_skin: Optional[SkinConfig] = None
 _active_skin_name: str = "default"

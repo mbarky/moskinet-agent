@@ -895,7 +895,7 @@ DEFAULT_CONFIG = {
         # /focus off restores. Never affects what the model sees (focus_view.py).
         "focus_view": False,
         "focus_saved_tool_progress": "all",
-        "skin": "default",
+        "skin": "moskinet",
         # UI language for static messages (approval prompts, some gateway slash replies); not agent
         # responses/logs/tool outputs. en, zh, ja, de, es, fr, tr, uk; unknown → en.
         "language": "en",
@@ -997,8 +997,8 @@ DEFAULT_CONFIG = {
     },
     "webapp": {"enabled": False, "host": "127.0.0.1", "port": 9120, "public_url": ""},  # gateway/webapp_listener.py
     "dashboard": {
-        # Visual theme: "default" | "midnight" | "ember" | "mono" | "cyberpunk" | "rose"
-        "theme": "default",
+        # Visual theme: "moskinet" | "moskinet-light" | "default" | "midnight" | "ember" | "mono" | "cyberpunk" | "rose"
+        "theme": "moskinet",
         # Process-isolation rollout controls. Read via the raw config loader, so tui_gateway.server
         # also owns explicit defaults.
         "turn_isolation": False,
