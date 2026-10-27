@@ -20,7 +20,8 @@ set -u
 # hygiene can't break the locked sync the way it used to before pm owned it.
 export UV_NO_CONFIG=1
 
-REPO_URL="${HERMES_REPO_URL:-https://github.com/NousResearch/hermes-agent.git}"
+# Moski.net fork: install from the Moski.net repository unless HERMES_REPO_URL overrides it.
+REPO_URL="${HERMES_REPO_URL:-https://github.com/mbarky/moskinet-agent.git}"
 BRANCH="main"
 INSTALL_COMMIT=""
 # The update channel to install: stable (the latest published release, the default for the

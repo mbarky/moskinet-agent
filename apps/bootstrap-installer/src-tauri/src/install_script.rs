@@ -204,9 +204,13 @@ pub(crate) fn prepare_cached_script_bytes(kind: ScriptKind, bytes: &[u8]) -> Vec
 /// Explicit timeouts: this runs on every bootstrap, and a black-holed
 /// connection (captive portal, hung proxy) would otherwise hang forever
 /// instead of failing so the user can Retry.
+/// GitHub `owner/repo` the install scripts are fetched from (Moski.net fork).
+const INSTALL_SCRIPT_REPO: &str = "mbarky/moskinet-agent";
+
 async fn download(kind: ScriptKind, commit_or_ref: &str, dest_path: &Path) -> Result<()> {
     let url = format!(
-        "https://raw.githubusercontent.com/NousResearch/hermes-agent/{}/scripts/{}",
+        "https://raw.githubusercontent.com/{}/{}/scripts/{}",
+        INSTALL_SCRIPT_REPO,
         commit_or_ref,
         kind.filename()
     );

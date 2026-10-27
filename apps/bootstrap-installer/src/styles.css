@@ -66,23 +66,42 @@
  * imported @layer base :root light seeds. Keep in sync with nousTheme.darkColors
  * if that palette is retuned.
  */
+/*
+ * Moski.net palette (brand SVG: emerald #0F3624, gold #C58B3B). The light block
+ * overrides the imported desktop's Nous-blue light seeds; unlayered, so it wins
+ * over its @layer base :root.
+ */
+:root:not(.dark) {
+  --theme-foreground: #0f3624;
+  --theme-primary: #0f3624;
+  --theme-secondary: color-mix(in srgb, #c58b3b 10%, #ffffff);
+  --theme-accent-soft: color-mix(in srgb, #c58b3b 14%, #ffffff);
+  --theme-midground: #0f3624;
+  --theme-warm: #c58b3b;
+  --theme-background-seed: #faf7f1;
+  --theme-sidebar-seed: #f4efe4;
+  --theme-card-seed: #ffffff;
+  --theme-elevated-seed: #ffffff;
+  --theme-bubble-seed: color-mix(in srgb, #c58b3b 8%, #faf7f1);
+}
+
 :root.dark {
   color-scheme: dark;
 
-  --theme-foreground: #ffe6cb;
-  --theme-primary: #ffe6cb;
-  --theme-secondary: #1b45a4;
-  --theme-accent-soft: #1540b1;
-  --theme-midground: #0053fd;
-  --theme-warm: #ffe6cb;
-  --theme-background-seed: #0d2f86;
-  --theme-sidebar-seed: #09286f;
-  --theme-card-seed: #12378f;
-  --theme-elevated-seed: #123a96;
-  --theme-bubble-seed: #143b91;
+  --theme-foreground: #ede6d8;
+  --theme-primary: #e8c68a;
+  --theme-secondary: #1a4a34;
+  --theme-accent-soft: #1f5a3e;
+  --theme-midground: #c58b3b;
+  --theme-warm: #c58b3b;
+  --theme-background-seed: #07160f;
+  --theme-sidebar-seed: #0a1d14;
+  --theme-card-seed: #0f3624;
+  --theme-elevated-seed: #123e2a;
+  --theme-bubble-seed: #134231;
 
-  /* Non-derived shadcn tokens applyTheme() paints inline (Nous dark values). */
-  --dt-primary-foreground: #0d2f86;
+  /* Non-derived shadcn tokens applyTheme() paints inline (Moski.net dark values). */
+  --dt-primary-foreground: #07160f;
   --dt-destructive: #c0473a;
   --dt-destructive-foreground: #fef2f2;
 }
