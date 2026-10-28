@@ -6,11 +6,24 @@
 
 > **Moski.net** is a branded build of [Hermes Agent](https://github.com/NousResearch/hermes-agent) by Nous Research (MIT).
 > It ships the `moskinet` emerald/gold skin as the default for the CLI/TUI, desktop and web dashboard, a Moski.net
-> persona that answers in Arabic or English and confirms before any money-moving action, and brand assets in [`brand/`](brand/).
-> The `hermes` command, config and upstream docs below are unchanged.
+> persona that answers in Arabic (light Egyptian flavor) or the user's language and confirms before any money-moving
+> action, and brand assets in [`brand/`](brand/). Arabic is the default interface language everywhere, and the GUIs
+> use the bundled [Almarai](https://fonts.google.com/specimen/Almarai) font. The `hermes` command, config and upstream
+> docs below are unchanged.
 >
 > - Switch looks: `/skin moskinet` (CLI) · dashboard theme `moskinet` or `moskinet-light`
+> - Switch language: `hermes config set display.language en` (or `ar`) · the web/desktop language picker
+> - Arabic copy rules: [`brand/glossary-ar.md`](brand/glossary-ar.md)
 > - Track upstream: `git fetch upstream && git merge upstream/main`
+>
+> **Terminal font (عربي):** the terminal draws its own font, so set it yourself. In Windows Terminal open
+> Settings → your profile → Appearance → Font face and pick **Almarai** (install it from Google Fonts first) or
+> **Cascadia Code** as a fallback. Arabic shaping and right-to-left order depend on the terminal: Windows Terminal,
+> iTerm2 and GNOME Terminal render it well; the legacy `cmd.exe` console does not.
+>
+> **خط الطرفية:** الطرفية تستخدم خطها الخاص، فاضبطه بنفسك: في Windows Terminal افتح الإعدادات ← ملفك ←
+> المظهر ← نوع الخط واختر **Almarai** (ثبّته أولاً من Google Fonts) أو **Cascadia Code**. للحصول على عرض صحيح
+> للعربية استخدم Windows Terminal وليس `cmd.exe` القديم.
 
 ---
 
