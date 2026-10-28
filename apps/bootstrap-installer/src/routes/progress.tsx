@@ -79,7 +79,7 @@ export default function ProgressScreen({ bootstrap }: ProgressProps) {
           <div className="mb-4">
             <div className="mb-1 flex items-center justify-between text-xs text-muted-foreground">
               <span className={clsx(bootstrap.status === 'running' && 'shimmer')}>
-                {progress.done} of {progress.total} steps complete
+                اكتملت {progress.done} من {progress.total} خطوات
               </span>
               <span className="tabular-nums">{pct}%</span>
             </div>

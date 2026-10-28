@@ -68,7 +68,7 @@ export default function Failure({ bootstrap }: FailureProps) {
 
       {logPath && (
         <p className="max-w-lg text-center text-xs text-muted-foreground/70">
-          Log: <code className="font-mono">{logPath}</code>
+          السجل: <code className="font-mono" dir="ltr">{logPath}</code>
         </p>
       )}
     </div>
