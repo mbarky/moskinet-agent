@@ -39,12 +39,12 @@ export default function Welcome() {
         </p>
 
         <p className="m-0 text-center text-base leading-normal tracking-tight text-muted-foreground">
-          Your trading and commerce agent. We&rsquo;ll set things up in the
-          background &mdash; takes a few minutes.
+          وكيلك للتداول والتجارة. هنجهّز كل حاجة في الخلفية &mdash; الموضوع
+          بياخد دقائق قليلة.
         </p>
       </div>
 
-      <HackeryButton label="Install" onClick={() => void startInstall()} />
+      <HackeryButton label="تثبيت" onClick={() => void startInstall()} />
     </div>
   )
 }

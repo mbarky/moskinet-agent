@@ -93,12 +93,12 @@ def test_catalog_values_have_no_escaped_newlines(lang: str):
 
 
 def test_default_when_nothing_set(monkeypatch):
-    """With no env var and no config override, falls back to English."""
+    """With no env var and no config override, uses the shipped display.language default (Moski.net: Arabic)."""
     monkeypatch.delenv("HERMES_LANGUAGE", raising=False)
     # Force config lookup to return None -- patch the cached reader.
     i18n.reset_language_cache()
     monkeypatch.setattr(i18n, "_config_language", lambda: None)
-    assert i18n.get_language() == "en"
+    assert i18n.get_language() == "ar"
 
 
 def test_language_is_per_profile_under_multiplex(monkeypatch, tmp_path):

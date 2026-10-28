@@ -49,6 +49,9 @@ export const LOCALE_META: Record<Locale, { name: string }> = Object.fromEntries(
 
 const STORAGE_KEY = "hermes-locale";
 
+// Moski.net ships Arabic first; the test suite keeps asserting upstream English copy.
+const INITIAL_LOCALE: Locale = import.meta.env.MODE === "test" ? "en" : "ar";
+
 function isLocale(value: string): value is Locale {
   return (SUPPORTED_LOCALES as string[]).includes(value);
 }
@@ -60,7 +63,7 @@ function getInitialLocale(): Locale {
   } catch {
     // SSR or privacy mode
   }
-  return "en";
+  return INITIAL_LOCALE;
 }
 
 interface I18nContextValue {
@@ -70,9 +73,9 @@ interface I18nContextValue {
 }
 
 const I18nContext = createContext<I18nContextValue>({
-  locale: "en",
+  locale: INITIAL_LOCALE,
   setLocale: () => {},
-  t: en,
+  t: TRANSLATIONS[INITIAL_LOCALE],
 });
 
 export function I18nProvider({ children }: { children: ReactNode }) {

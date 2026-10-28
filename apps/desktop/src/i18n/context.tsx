@@ -7,6 +7,7 @@ import { getHermesConfigRecord, type HermesConfigRecord, retainConfigReadOrigin,
 import { TRANSLATIONS } from './catalog'
 import {
   DEFAULT_LOCALE,
+  INITIAL_LOCALE,
   isRtlLocale,
   isSupportedLocaleValue,
   localeConfigValue,
@@ -101,7 +102,7 @@ export function I18nProvider({
   initialLocale,
   scopeKey
 }: I18nProviderProps) {
-  const [locale, setLocaleState] = useState<Locale>(() => normalizeLocale(initialLocale))
+  const [locale, setLocaleState] = useState<Locale>(() => (initialLocale === undefined ? INITIAL_LOCALE : normalizeLocale(initialLocale)))
   const [isLoadingConfig, setIsLoadingConfig] = useState(false)
   const [isSavingLocale, setIsSavingLocale] = useState(false)
   const [configLoadError, setConfigLoadError] = useState<Error | null>(null)

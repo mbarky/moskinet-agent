@@ -55,7 +55,7 @@ export const en: Translations = {
   },
 
   app: {
-    brand: "Hermes Agent",
+    brand: "Moski.net",
     brandShort: "HA",
     closeNavigation: "Close navigation",
     closeModelTools: "Close model and tools",
@@ -86,6 +86,11 @@ export const en: Translations = {
       plugins: "Plugins",
       sessions: "Sessions",
       skills: "Skills",
+      files: "Files",
+      channels: "Channels",
+      webhooks: "Webhooks",
+      pairing: "Pairing",
+      system: "System",
     },
     modelToolsSheetSubtitle: "& tools",
     modelToolsSheetTitle: "Model",

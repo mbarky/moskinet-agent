@@ -1,0 +1,83 @@
+import type { TranslationOverride } from '@hermes/shared/i18n'
+
+import { arAuxTasks } from './ar_aux_tasks'
+import { arDelegationRouting } from './ar_delegation_routing'
+import type { ModelSettingsTranslations } from './types_model_settings'
+
+export const arModelSettings: TranslationOverride<ModelSettingsTranslations> = {
+  setupProviderFallback: 'المزوّد',
+  setUpProvider: name => `إعداد ${name}`,
+  staleAuxBefore: (count, names) =>
+    count > 1 ? `${count} مهام مساعدة (${names}) ما زالت تعمل على ` : `${count} مهمة مساعدة (${names}) ما زالت تعمل على `,
+  staleAuxAfter: '، وليس على نموذجك الرئيسي.',
+  staleAuxOtherProviders: 'مزوّدين آخرين',
+  moaEnabled: 'مفعّل',
+  moaSetDefault: 'تعيين كافتراضي',
+  moaNewPresetPlaceholder: 'إعداد مسبق جديد',
+  moaAddPreset: 'إضافة إعداد مسبق',
+  customModel: 'نموذج مخصص…',
+  customModelPlaceholder: 'معرّف النموذج',
+  chooseFromList: 'الاختيار من القائمة',
+  moaDefault: 'الافتراضي:',
+  moaReferenceToggle: (enabled, index) => `${enabled ? 'تعطيل' : 'تفعيل'} المرجع ${index}`,
+  moaReferenceTitle: index => `المرجع ${index}`,
+  moaAddReference: 'إضافة نموذج مرجعي',
+  loading: 'جارٍ تحميل تهيئة النموذج…',
+  appliesDesc: 'يُطبَّق على الجلسات الجديدة. استخدم منتقي النماذج في مربع الكتابة لتبديل نموذج المحادثة الحالية فورًا.',
+  provider: 'المزوّد',
+  model: 'النموذج',
+  applying: 'جارٍ التطبيق…',
+  mainAppliedTitle: 'تم تحديث النموذج الرئيسي',
+  mainAppliedMessage: model => `ستستخدم الجلسات الجديدة ${model}.`,
+  defaultsLabel: 'الافتراضيات',
+  reasoning: 'التفكير',
+  reasoningOff: 'معطّل',
+  speed: 'السرعة',
+  speedStandard: 'عادية',
+  defaultsFailed: 'تعذّر حفظ الإعدادات الافتراضية للنموذج',
+  loadFailed: 'تعذّر تحميل النماذج',
+  restartRequired: 'يشغّل هذا الخادم الخلفي كودًا قديمًا بعد التحديث. أعد تشغيله لتحميل الكود الجديد.',
+  restartBackend: 'إعادة تشغيل الخادم الخلفي',
+  restartingBackend: 'جارٍ إعادة تشغيل الخادم الخلفي…',
+  restartFailed: 'تعذّرت إعادة تشغيل الخادم الخلفي',
+  auxiliaryTitle: 'النماذج المساعدة',
+  resetAllToMain: 'إعادة الكل إلى الرئيسي',
+  staleAuxDismiss: 'عدم العرض مرة أخرى',
+  auxiliaryDesc: 'تعمل المهام المساعدة على النموذج الرئيسي افتراضيًا. خصّص نموذجًا لأي مهمة لتجاوز ذلك.',
+  setToMain: 'التعيين إلى الرئيسي',
+  change: 'تغيير',
+  autoUseMain: 'تلقائي · استخدام النموذج الرئيسي',
+  inheritMainEffort: 'وراثة · مستوى تفكير النموذج الرئيسي',
+  inheritsFrom: task => `يرث من ${task}`,
+  followTask: task => `اتباع ${task}`,
+  providerDefault: '(افتراضي المزوّد)',
+  fallbackAdd: 'إضافة بديل',
+  fallbackEmpty: 'لا توجد نماذج بديلة؛ يُستخدم النموذج الافتراضي ما لم يفشل.',
+  notInCatalog: 'غير موجود في قائمة نماذج هذا المزوّد، وقد تنتقل الاستدعاءات إلى نموذج احتياطي.',
+  moaTitle: 'Mixture of Agents',
+  moaPreset: 'الإعداد المسبق',
+  moaDescription:
+    'اضبط إعدادات مسبقة مسمّاة تظهر كنماذج ضمن المزوّد Mixture of Agents. المُجمِّع هو النموذج المنفّذ: يشغّل كل خطوة في حلقة الأدوات، وتُحسب معظم تكلفة التشغيل على مزوّده. النماذج المرجعية تقدّم رأيها مرة واحدة فقط في كل دور للمستخدم افتراضيًا.',
+  moaAggregator: 'المُجمِّع',
+  moaAggregatorBilled: 'النموذج المنفّذ · تُحسب عليه تكلفة التشغيل',
+  moaReferenceHint: 'يقدّم رأيه مرة في كل دور افتراضيًا',
+  tasks: arAuxTasks,
+  subagents: {
+    inherit: 'الوراثة من الوكيل الرئيسي',
+    modelOnly: 'نموذج مخصص (باستخدام بيانات اعتماد الوكيل الرئيسي)',
+    providerLabel: 'مزوّد الوكيل الفرعي',
+    modelLabel: 'نموذج الوكيل الفرعي',
+    direct: 'تجاوز بنقطة نهاية مباشرة',
+    customProvider: 'مزوّد مخصص…',
+    customProviderLabel: 'مزوّد مخصص للوكيل الفرعي',
+    parentModel: 'استخدام نموذج الوكيل الرئيسي',
+    parentModelWarning:
+      'يجب أن يدعم المزوّد المختار نموذج الوكيل الرئيسي. قد يفشل المسار المحدد بالمزوّد فقط إذا كان النموذج غير متوافق. وإذا كان لذلك المزوّد نموذج افتراضي خاص به، فسيستخدمه الوكلاء الفرعيون بدلًا منه.',
+    directActive:
+      'نقطة نهاية مباشرة مفعّلة ولها الأولوية على المزوّد المحفوظ. تُحفظ نقطة النهاية وبيانات اعتمادها ما دام هذا الوضع محددًا.',
+    directClear: 'تطبيق هذا المسار يمسح نقطة النهاية المباشرة ومفتاحها المحفوظ. تبقى إعدادات الطلب الأخرى كما هي.',
+    catalogFailed: 'كتالوج النماذج غير متاح. أدخل مزوّدًا ونموذجًا يدويًا، أو أعد المحاولة.',
+    draftHint: 'تبقى التغييرات محلية حتى تطبيقها.',
+    routing: arDelegationRouting
+  }
+}

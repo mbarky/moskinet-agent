@@ -136,7 +136,7 @@ def test_manifest_only_pack_registers_language_and_display_language_resolves(hom
     assert i18n.surface_catalog("pl", "desktop") == {"settings.title": "Ustawienia"}
     assert i18n.surface_catalog("pl", "core") == {"approval.denied": "Zatwierdzenie"}
     # Registration never touches display.language; setting it makes the pack the active language.
-    assert i18n.get_language() == "en"
+    assert i18n.get_language() == "ar"  # Moski.net ships display.language: ar
     (home / "config.yaml").write_text(
         yaml.safe_dump({"plugins": {"enabled": ["hermes-lang-pl"]}, "display": {"language": "pl"}}), encoding="utf-8")
     i18n.reset_language_cache()

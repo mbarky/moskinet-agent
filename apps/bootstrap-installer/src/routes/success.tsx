@@ -38,7 +38,7 @@ export default function Success() {
     <div className="hermes-fade-in flex h-full flex-col items-center justify-center gap-8 px-12 py-10">
       <div className="w-full max-w-2xl min-w-0 text-center">
         <p
-          className="fit-text mx-auto mb-4 w-full font-['Collapse'] font-bold uppercase leading-[0.9] tracking-[0.08em] text-midground mix-blend-plus-lighter dark:text-foreground/90"
+          className="fit-text mx-auto mb-4 w-full font-['Almarai'] font-extrabold leading-[1.15] tracking-normal text-midground mix-blend-plus-lighter dark:text-foreground/90"
           style={
             {
               '--fit-text-line-height': '0.9',
@@ -48,20 +48,20 @@ export default function Success() {
           }
         >
           <span>
-            <span>Moski.net is ready</span>
+            <span>Moski.net جاهز</span>
           </span>
-          <span aria-hidden="true">Moski.net is ready</span>
+          <span aria-hidden="true">Moski.net جاهز</span>
         </p>
 
         <p className="m-0 text-center text-base leading-normal tracking-tight text-muted-foreground">
-          You can launch from here, or any time from your terminal with{' '}
+          يمكنك التشغيل من هنا، أو في أي وقت من الطرفية باستخدام{' '}
           <code className="font-mono text-sm text-foreground/80">hermes desktop</code>.
         </p>
       </div>
 
       <HackeryButton
         disabled={launching}
-        label={launching ? 'Launching' : 'Launch'}
+        label={launching ? 'جارٍ التشغيل' : 'تشغيل'}
         loading={launching}
         onClick={() => void handleLaunch()}
       />
@@ -70,7 +70,7 @@ export default function Success() {
         <div className="flex max-w-2xl items-start gap-2 text-sm" role="alert">
           <AlertCircle className="mt-0.5 shrink-0 text-destructive" size={16} />
           <div className="min-w-0">
-            <div className="font-medium text-destructive">Couldn&rsquo;t launch the desktop app</div>
+            <div className="font-medium text-destructive">تعذّر تشغيل تطبيق سطح المكتب</div>
             <div className="mt-0.5 text-muted-foreground">{error}</div>
           </div>
         </div>

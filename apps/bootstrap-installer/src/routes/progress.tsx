@@ -4,6 +4,7 @@ import { Check, ChevronRight, FileText, X } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 
 import { BrandMark } from '../components/brand-mark'
+import { stageTitle } from '../lib/stage-titles'
 import { Button } from '../components/button'
 import { Loader } from '../components/loader'
 import { formatDuration, formatElapsed } from '../lib/format'
@@ -51,11 +52,11 @@ export default function ProgressScreen({ bootstrap }: ProgressProps) {
   }, [bootstrap.status])
 
   const isUpdate = mode === 'update'
-  const title = bootstrap.status === 'completed' ? 'Done' : isUpdate ? 'Updating Moski.net' : 'Setting up Moski.net'
+  const title = bootstrap.status === 'completed' ? 'تم' : isUpdate ? 'جارٍ تحديث Moski.net' : 'جارٍ إعداد Moski.net'
 
   const description = isUpdate
-    ? 'Moski.net is updating to the latest version — this only takes a moment.'
-    : 'This is a one-time setup. The Moski.net installer is downloading dependencies and configuring your machine. Subsequent launches will skip this step.'
+    ? 'يتم تحديث Moski.net إلى أحدث إصدار — لن يستغرق ذلك سوى لحظات.'
+    : 'هذا إعداد يتم مرة واحدة فقط. يقوم المثبّت الآن بتنزيل المتطلبات وتهيئة جهازك، ولن تتكرر هذه الخطوة في المرات القادمة.'
 
   const pct = Math.round(progress.fraction * 100)
 
@@ -117,7 +118,7 @@ export default function ProgressScreen({ bootstrap }: ProgressProps) {
                   key={name}
                 >
                   {rec.state === 'running' && <Loader className="-ml-2 size-6 shrink-0" />}
-                  <span className="flex-1 truncate">{rec.info.title}</span>
+                  <span className="flex-1 truncate">{stageTitle(name, rec.info.title)}</span>
                   {meta && <span className="text-xs tabular-nums text-muted-foreground/70">{meta}</span>}
                   <StateIcon state={rec.state ?? null} />
                 </li>
@@ -129,8 +130,8 @@ export default function ProgressScreen({ bootstrap }: ProgressProps) {
         {showLogs && (
           <div className="flex w-1/2 flex-col border-l border-(--stroke-nous)">
             <div className="flex shrink-0 items-center justify-between border-b border-(--stroke-nous) px-3 py-2 text-xs">
-              <span className="font-medium text-foreground/80">Live output</span>
-              <span className="tabular-nums text-muted-foreground">{bootstrap.logs.length} lines</span>
+              <span className="font-medium text-foreground/80">المخرجات المباشرة</span>
+              <span className="tabular-nums text-muted-foreground">{bootstrap.logs.length} سطر</span>
             </div>
             <div className="flex-1 overflow-y-auto px-3 py-2 font-mono text-[10.5px] leading-relaxed">
               {bootstrap.logs.map((entry, idx) => (
@@ -157,13 +158,13 @@ export default function ProgressScreen({ bootstrap }: ProgressProps) {
           type="button"
         >
           <FileText size={14} />
-          {showLogs ? 'Hide details' : 'Show details'}
+          {showLogs ? 'إخفاء التفاصيل' : 'عرض التفاصيل'}
           <ChevronRight className={clsx('transition-transform', showLogs && 'rotate-90')} size={12} />
         </button>
 
         {bootstrap.status === 'running' && (
           <Button onClick={() => void cancelInstall()} size="sm" variant="outline">
-            Cancel
+            إلغاء
           </Button>
         )}
       </div>

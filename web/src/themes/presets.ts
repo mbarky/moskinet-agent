@@ -245,10 +245,11 @@ export const defaultLargeTheme: DashboardTheme = {
 
 const MOSKINET_TYPOGRAPHY: ThemeTypography = {
   ...DEFAULT_TYPOGRAPHY,
-  fontSans: `"Montserrat", ${SYSTEM_SANS}`,
+  // Almarai is bundled via @fontsource/almarai (imported in main.tsx) so Arabic renders offline.
+  fontSans: `"Almarai", ${SYSTEM_SANS}`,
   fontMono: `"JetBrains Mono", ${SYSTEM_MONO}`,
   fontUrl:
-    "https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap",
+    "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap",
 };
 
 /** Moski.net brand — logo emerald (#0F3624) ground with logo gold (#C58B3B) accents. */

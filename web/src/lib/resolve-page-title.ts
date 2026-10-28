@@ -42,11 +42,12 @@ export function resolvePageTitle(
   }
   const key = BUILTIN[normalized];
   if (key) {
-    return t.app.nav[key];
+    return t.app.nav[key] ?? key;
   }
   const literal = BUILTIN_LITERAL[normalized];
   if (literal) {
-    return literal;
+    const nav = t.app.nav as Record<string, string | undefined>;
+    return nav[normalized.slice(1)] ?? literal;
   }
   // Derive title from pathname: "/profiles" → "Profiles"
   const segment = normalized.slice(1);

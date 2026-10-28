@@ -381,9 +381,10 @@ _BUILTIN_SKINS: dict[str, dict[str, Any]] = {
                 "sizing the position", "hedging exposure", "tracking the order", "routing the cart"],
             "wings": _wings("◆", ("▲", "▼"), ("═", "═"), "◇")},
         "branding": {
-            **_branding("Moski.net", "◆", "Trade well! ◆", prompt="M›"),
+            **_branding("Moski.net", "◆", "بالتوفيق في تداولاتك! ◆", prompt="M›"),
             "agent_name": "Moski.net", "response_label": " ◆ Moski.net ",
-            "welcome": "Welcome to Moski.net! Type your message or /help for commands."},
+            "welcome": "أهلاً بك في Moski.net! اكتب رسالتك أو /help لعرض الأوامر.",
+            "help_header": "(◆) الأوامر المتاحة"},
         "tool_prefix": "│",
         "banner_logo": """[bold #5CC48D]███╗   ███╗ ██████╗ ███████╗██╗  ██╗██╗[/][bold #E8BE72]   ███╗   ██╗███████╗████████╗[/]
 [bold #4DB880]████╗ ████║██╔═══██╗██╔════╝██║ ██╔╝██║[/][bold #DDAE5E]   ████╗  ██║██╔════╝╚══██╔══╝[/]

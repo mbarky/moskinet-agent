@@ -386,20 +386,20 @@ interface FakeStage {
 }
 
 const FAKE_INSTALL_STAGES: FakeStage[] = [
-  { name: 'system-packages', title: 'System packages' },
+  { name: 'system-packages', title: 'حزم النظام' },
   { name: 'uv', title: 'uv' },
-  { name: 'python', title: 'Python environment' },
-  { name: 'repo', title: 'Moski.net repository' },
-  { name: 'dependencies', title: 'Python dependencies' },
-  { name: 'node', title: 'Node runtime' },
-  { name: 'desktop', title: 'Desktop app' }
+  { name: 'python', title: 'بيئة Python' },
+  { name: 'repo', title: 'مستودع Moski.net' },
+  { name: 'dependencies', title: 'متطلبات Python' },
+  { name: 'node', title: 'بيئة Node' },
+  { name: 'desktop', title: 'تطبيق سطح المكتب' }
 ]
 
 const FAKE_UPDATE_STAGES: FakeStage[] = [
-  { name: 'handoff', title: 'Preparing to update' },
-  { name: 'update', title: 'Downloading the latest version' },
-  { name: 'rebuild', title: 'Rebuilding the desktop app' },
-  { name: 'install', title: 'Installing the update' }
+  { name: 'handoff', title: 'التحضير للتحديث' },
+  { name: 'update', title: 'تنزيل أحدث إصدار' },
+  { name: 'rebuild', title: 'إعادة بناء تطبيق سطح المكتب' },
+  { name: 'install', title: 'تثبيت التحديث' }
 ]
 
 const sleep = (ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms))

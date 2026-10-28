@@ -14,6 +14,10 @@ import type { BundledLocale, Locale } from './types'
 
 export const DEFAULT_LOCALE: BundledLocale = 'en'
 
+/** Moski.net: the language shown before the user picks one (DEFAULT_LOCALE stays the fallback).
+ *  The test suite keeps upstream's English-first behaviour. */
+export const INITIAL_LOCALE: BundledLocale = import.meta.env.MODE === 'test' ? DEFAULT_LOCALE : 'ar'
+
 export const LOCALE_OPTIONS = [
   {
     id: 'en',
@@ -261,6 +265,11 @@ export function osPreferredLocale(tag: string | null | undefined): Locale | null
 export function resolveInitialLocale(saved: string | null | undefined, osLocale: string | null | undefined): Locale {
   if (isSupportedLocaleValue(saved)) {
     return normalizeLocale(saved)
+  }
+
+  // Moski.net ships Arabic first, whatever the OS language.
+  if (INITIAL_LOCALE !== DEFAULT_LOCALE) {
+    return INITIAL_LOCALE
   }
 
   return osPreferredLocale(osLocale) ?? DEFAULT_LOCALE

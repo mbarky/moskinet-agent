@@ -9,6 +9,6 @@ export const arThemePicker: ThemePickerCopy = {
   basic: 'أساسي',
   basicDetail: 'للتحدث مع Hermes.',
   elite: 'متقدم',
-  eliteDetail: 'للمطورين: الطرفية والملفات والفروقات.',
-  noPick: 'لا اختيار'
+  eliteDetail: 'للمطوّرين: الطرفية والملفات والفروقات.',
+  noPick: 'بلا اختيار'
 }

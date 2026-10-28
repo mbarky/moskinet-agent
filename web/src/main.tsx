@@ -1,5 +1,8 @@
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router";
+import "@fontsource/almarai/400.css";
+import "@fontsource/almarai/700.css";
+import "@fontsource/almarai/800.css";
 import "./index.css";
 import App from "./App";
 import { ProfileProvider } from "./contexts/ProfileProvider";

@@ -105,6 +105,12 @@ export interface Translations {
       plugins: string;
       sessions: string;
       skills: string;
+      // Moski.net: optional so locales without them fall back to the literal English label.
+      files?: string;
+      channels?: string;
+      webhooks?: string;
+      pairing?: string;
+      system?: string;
     };
     modelToolsSheetSubtitle: string;
     modelToolsSheetTitle: string;
