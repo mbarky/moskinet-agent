@@ -43,6 +43,9 @@ import {
 } from "@nous-research/ui/ui/components/select";
 import { Checkbox } from "@nous-research/ui/ui/components/checkbox";
 import { useI18n } from "@/i18n";
+import { usePageCopy } from "@/i18n/pages/use-page-copy";
+import { profilesEn } from "@/i18n/pages/profiles.en";
+import { profilesAr } from "@/i18n/pages/profiles.ar";
 import { usePageHeader } from "@/contexts/usePageHeader";
 import { cn, themedBody } from "@/lib/utils";
 import { errorMessage } from "@/lib/api-error";
@@ -261,6 +264,8 @@ export default function ProfilesPage() {
   const [loading, setLoading] = useState(true);
   const { toast, showToast } = useToast();
   const { t } = useI18n();
+  // Named `pc` (not `p`) because `p` is used throughout this file for ProfileInfo.
+  const pc = usePageCopy(profilesEn, profilesAr);
   const { setEnd } = usePageHeader();
   const { setProfile } = useProfileScope();
 
@@ -450,10 +455,7 @@ export default function ProfilesPage() {
       });
       showToast(`${t.profiles.created}: ${name}`, "success");
       if (picked && res.model_set === false) {
-        showToast(
-          `Profile created, but the model could not be saved — set it from the profile editor.`,
-          "error",
-        );
+        showToast(pc.modelNotSaved, "error");
       }
       setNewName("");
       setNewDescription("");
@@ -756,7 +758,7 @@ export default function ProfilesPage() {
           outlined
           onClick={() => navigate("/profiles/new")}
         >
-          Build
+          {pc.build}
         </Button>
         <Button
           className="uppercase"
@@ -770,7 +772,7 @@ export default function ProfilesPage() {
     return () => {
       setEnd(null);
     };
-  }, [setEnd, t.common.create, loading, navigate]);
+  }, [setEnd, t.common.create, loading, navigate, pc]);
 
   const cloning = cloneFrom !== null;
 
@@ -824,7 +826,7 @@ export default function ProfilesPage() {
               size="icon"
               onClick={() => setCreateModalOpen(false)}
               className="absolute right-2 top-2 text-muted-foreground hover:text-foreground"
-              aria-label="Close"
+              aria-label={pc.close}
             >
               <X />
             </Button>
@@ -1249,7 +1251,7 @@ export default function ProfilesPage() {
               size="icon"
               onClick={closeEditor}
               className="absolute right-2 top-2 text-muted-foreground hover:text-foreground"
-              aria-label="Close"
+              aria-label={pc.close}
             >
               <X />
             </Button>

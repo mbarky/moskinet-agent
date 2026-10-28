@@ -40,6 +40,9 @@ import { useI18n } from "@/i18n";
 import { usePageHeader } from "@/contexts/usePageHeader";
 import { PluginSlot } from "@/plugins";
 import { errorMessage } from "@/lib/api-error";
+import { usePageCopy } from "@/i18n/pages/use-page-copy";
+import { envEn } from "@/i18n/pages/env.en";
+import { envAr } from "@/i18n/pages/env.ar";
 
 /* ------------------------------------------------------------------ */
 /*  Provider grouping                                                  */
@@ -128,6 +131,7 @@ function EnvVarRow({
   compact?: boolean;
 }) {
   const { t } = useI18n();
+  const p = usePageCopy(envEn, envAr);
   const isEditing = edits[varKey] !== undefined;
   const isRevealed = !!revealed[varKey];
   const displayValue = isRevealed
@@ -262,7 +266,7 @@ function EnvVarRow({
               size="icon"
               onClick={() => onReveal(varKey)}
               title={isRevealed ? t.env.hideValue : t.env.showValue}
-              aria-label={isRevealed ? `Hide ${varKey}` : `Reveal ${varKey}`}
+              aria-label={isRevealed ? p.hideVar(varKey) : p.revealVar(varKey)}
             >
               {isRevealed ? <EyeOff /> : <Eye />}
             </Button>
@@ -616,6 +620,7 @@ export default function EnvPage() {
   const [showAdvanced, setShowAdvanced] = useState(true); // Show all providers by default
   const { toast, showToast } = useToast();
   const { t } = useI18n();
+  const p = usePageCopy(envEn, envAr);
   const { setAfterTitle } = usePageHeader();
 
   useEffect(() => {
@@ -629,14 +634,14 @@ export default function EnvPage() {
   const sections = useMemo(() => {
     const items: { id: string; label: string }[] = [
       { id: "section-oauth", label: "OAuth" },
-      { id: "section-providers", label: "Providers" },
+      { id: "section-providers", label: p.providers },
     ];
     if (vars) {
       const categories = ["tool", "messaging", "setting"];
       const CATEGORY_LABELS: Record<string, string> = {
-        tool: "Tools",
+        tool: p.tools,
         messaging: t.common.gateway ?? "Gateway",
-        setting: "Settings",
+        setting: p.settings,
       };
       for (const cat of categories) {
         const hasEntries = Object.values(vars).some(
@@ -650,7 +655,7 @@ export default function EnvPage() {
       items.push({ id: "section-custom", label: t.env.customTitle });
     }
     return items;
-  }, [vars, t]);
+  }, [vars, t, p]);
 
   useLayoutEffect(() => {
     if (!vars) {
@@ -663,7 +668,7 @@ export default function EnvPage() {
     setAfterTitle(
       <nav
         className="flex shrink-0 flex-nowrap items-center gap-1"
-        aria-label="Jump to section"
+        aria-label={p.jumpToSection}
       >
         {sections.map((s) => (
           <button
@@ -710,7 +715,7 @@ export default function EnvPage() {
         delete n[key];
         return n;
       });
-      showToast(`${key} ${t.common.save.toLowerCase()}d`, "success");
+      showToast(p.saved(key), "success");
     } catch (e) {
       showToast(`${t.config.failedToSave} ${key}: ${errorMessage(e)}`, "error");
     } finally {

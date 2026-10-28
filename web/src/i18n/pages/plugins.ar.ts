@@ -1,0 +1,62 @@
+import type { CopyOf } from "./use-page-copy";
+import type { pluginsEn } from "./plugins.en";
+
+export const pluginsAr: CopyOf<typeof pluginsEn> = {
+  memoryStatus: {
+    ready: "جاهز",
+    needs_config: "يحتاج إعدادًا",
+    unavailable: "غير متاح",
+    missing: "مفقود",
+  },
+  setupAlreadyInstalled: "مثبّت مسبقًا",
+  setupNoDeclaredSteps: "لا توجد خطوات إعداد معلنة",
+  setupResults: "نتائج الإعداد",
+  providerInstalledButUnavailable:
+    "هذا المزوّد مثبّت لكنه غير متاح. قد يحتاج إلى تبعيات محلية أو خطوة إعداد يدوية قبل أن يتمكن Hermes من تفعيله.",
+  finishSetupSteps: "أكمل خطوات الإعداد هذه قبل أن يتمكن Hermes من تفعيل هذا المزوّد.",
+  dependencySetupCompleted: "اكتمل إعداد تبعيات المزوّد.",
+  installingProviderDeps: "جارٍ تثبيت تبعيات المزوّد",
+  installProviderDeps: "تثبيت تبعيات المزوّد",
+  runningProviderSetup: "جارٍ إعداد المزوّد. قد يستغرق ذلك دقيقة…",
+  externalDependency: (name: string) => `تبعية خارجية${name ? `: ${name}` : ""}`,
+  installDep: (name: string) => (name ? `تثبيت ${name}` : "تثبيت التبعية"),
+  verifyDep: (name: string) => (name ? `التحقق من ${name}` : "التحقق من التبعية"),
+  pythonDependencies: "تبعيات Python",
+  requiredEnvValues:
+    "قيم البيئة المطلوبة. املأ الحقول المطابقة أدناه، أو اضبطها في بيئة Hermes.",
+  failedToLoadProviderConfig: "تعذّر تحميل إعدادات المزوّد",
+  pluginInstalled: (name: string) => `تم تثبيت ${name}`,
+  installFailed: "فشل التثبيت",
+  rescanFailed: "فشلت إعادة الفحص",
+  saveFailed: "فشل الحفظ",
+  providerSetupFailedNames: (names: string) =>
+    `فشل إعداد المزوّد: ${names}. راجع نتائج الإعداد أدناه.`,
+  providerSetupFinished: "اكتمل إعداد المزوّد",
+  providerSetupFailed: "فشل إعداد المزوّد",
+  failed: "فشلت العملية",
+  providersHint: "اضبط مزوّدي الذاكرة واختيار محرك السياق وقت التشغيل.",
+  active: "نشط",
+  builtinMemoryNote: "سيستخدم Hermes الملفين المدمجين MEMORY.md وUSER.md.",
+  activeProviderMissing: (name: string) =>
+    `المزوّد النشط ${name} لم يعد مثبّتًا. اختر مزوّدًا آخر واحفظ.`,
+  providerNeedsConfig:
+    "تبعيات المزوّد مثبّتة. أضف بيانات الاعتماد المطلوبة أو رابط URL للاستضافة الذاتية أدناه، ثم احفظ المزوّد.",
+  loadingProviderSettings: "جارٍ تحميل إعدادات المزوّد…",
+  noDashboardSettings: "لا يوفّر هذا المزوّد إعدادات في لوحة التحكم.",
+  required: "مطلوب",
+  set: "مضبوط",
+  open: "فتح",
+  leaveBlankToKeep: "اتركه فارغًا للإبقاء على القيمة الحالية",
+  hideSecret: "إخفاء القيمة السرية",
+  showSecret: "إظهار القيمة السرية",
+  saveMemoryProvider: "حفظ مزوّد الذاكرة",
+  saveContextEngine: "حفظ محرك السياق",
+  installIdPlaceholder: "owner/repo أو owner/repo/subdir أو https://...",
+  pluginRemoved: (name: string) => `تمت إزالة ${name}`,
+  removeDescription: (name: string) => `سيؤدي هذا إلى إزالة الإضافة «${name}» من وكيلك.`,
+  chipTools: (count: number) => `${count} أدوات`,
+  chipHooks: (count: number) => `${count} خطافات`,
+  chipMiddleware: (count: number) => `${count} وسيط`,
+  chipEnv: (list: string) => `البيئة: ${list}`,
+  docs: "التوثيق",
+};

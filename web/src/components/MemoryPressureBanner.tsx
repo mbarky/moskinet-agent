@@ -2,6 +2,9 @@ import { useState } from "react";
 import { AlertTriangle, X } from "lucide-react";
 import type { StatusResponse } from "@/lib/api";
 import { useI18n } from "@/i18n";
+import { usePageCopy } from "@/i18n/pages/use-page-copy";
+import { memoryPressureBannerEn } from "@/i18n/pages/memoryPressureBanner.en";
+import { memoryPressureBannerAr } from "@/i18n/pages/memoryPressureBanner.ar";
 
 /**
  * App-wide warning banner for resource trouble (NS-656): memory pressure
@@ -74,6 +77,7 @@ export function MemoryPressureBanner({
   status: StatusResponse | null;
 }) {
   const { t } = useI18n();
+  const p = usePageCopy(memoryPressureBannerEn, memoryPressureBannerAr);
   const memory = status?.memory;
   const disk = status?.disk;
   const pressure = memory?.pressure;
@@ -140,7 +144,7 @@ export function MemoryPressureBanner({
 
   const critical = trigger === "critical" || trigger === "disk_critical";
   const diskFreeLabel =
-    disk?.free_mb != null ? ` (${Math.round(disk.free_mb)} MB free)` : "";
+    disk?.free_mb != null ? p.diskFree(Math.round(disk.free_mb)) : "";
   const message =
     trigger === "disk_critical"
       ? `${

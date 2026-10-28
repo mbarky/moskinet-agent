@@ -19,6 +19,9 @@ import {
 import { cn, themedBody } from "@/lib/utils";
 import { useTheme } from "@/themes";
 import { errorMessage } from "@/lib/api-error";
+import { usePageCopy } from "@/i18n/pages/use-page-copy";
+import { hermesConsoleModalEn } from "@/i18n/pages/hermes-console-modal.en";
+import { hermesConsoleModalAr } from "@/i18n/pages/hermes-console-modal.ar";
 
 type ConsoleFrame =
   | {
@@ -105,6 +108,7 @@ function isPrintable(data: string): boolean {
 
 export function HermesConsoleModal({ open, onClose }: HermesConsoleModalProps) {
   const modalRef = useModalBehavior({ open, onClose });
+  const p = usePageCopy(hermesConsoleModalEn, hermesConsoleModalAr);
   const hostRef = useRef<HTMLDivElement | null>(null);
   const termRef = useRef<XtermTerminal | null>(null);
   const wsRef = useRef<WebSocket | null>(null);
@@ -526,7 +530,7 @@ export function HermesConsoleModal({ open, onClose }: HermesConsoleModalProps) {
               Hermes Console
             </h2>
             <div className="mt-1 flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
-              <Badge tone={statusTone}>{connectionState}</Badge>
+              <Badge tone={statusTone}>{p.state[connectionState]}</Badge>
               <span className="font-mono">{consoleProfile}</span>
               {(connectionState === "closed" || connectionState === "error") && (
                 <Button
@@ -536,9 +540,9 @@ export function HermesConsoleModal({ open, onClose }: HermesConsoleModalProps) {
                     setConnectionState("connecting");
                     setConnectNonce((n) => n + 1);
                   }}
-                  aria-label="Reconnect console"
+                  aria-label={p.reconnectConsole}
                 >
-                  Reconnect
+                  {p.reconnect}
                 </Button>
               )}
             </div>
@@ -548,7 +552,7 @@ export function HermesConsoleModal({ open, onClose }: HermesConsoleModalProps) {
             size="icon"
             onClick={onClose}
             className="text-muted-foreground hover:text-foreground"
-            aria-label="Close console"
+            aria-label={p.closeConsole}
           >
             <X />
           </Button>

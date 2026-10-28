@@ -101,6 +101,9 @@ import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 import { useI18n } from "@/i18n";
 import type { Translations } from "@/i18n/types";
+import { usePageCopy } from "@/i18n/pages/use-page-copy";
+import { appEn } from "@/i18n/pages/app.en";
+import { appAr } from "@/i18n/pages/app.ar";
 import { PluginPage, PluginSlot, usePlugins } from "@/plugins";
 import type { PluginManifest } from "@/plugins";
 import { useTheme } from "@/themes";
@@ -110,7 +113,8 @@ import { sharedGatewayProfiles, sharedGatewayRestartDescription } from "@/lib/sh
 import { api } from "@/lib/api";
 import type { StatusResponse, UpdateCheckResponse } from "@/lib/api";
 
-function RouteFallback({ label = "Loading…" }: { label?: string }) {
+function RouteFallback({ label }: { label?: string }) {
+  const p = usePageCopy(appEn, appAr);
   return (
     <div
       className="flex min-h-[12rem] flex-1 items-center justify-center"
@@ -119,7 +123,7 @@ function RouteFallback({ label = "Loading…" }: { label?: string }) {
     >
       <div className="flex items-center gap-2 text-sm text-muted-foreground">
         <Spinner />
-        <span>{label}</span>
+        <span>{label ?? p.loading}</span>
       </div>
     </div>
   );
@@ -373,6 +377,7 @@ const SIDEBAR_COLLAPSED_KEY = "hermes-sidebar-collapsed";
 
 export default function App() {
   const { t } = useI18n();
+  const p = usePageCopy(appEn, appAr);
   const { pathname } = useLocation();
   const { profile } = useProfileScope();
   const { manifests, loading: pluginsLoading } = usePlugins(profile);
@@ -802,7 +807,7 @@ export default function App() {
                   !chatOverriddenByPlugin &&
                   (pluginsLoading ? (
                     isChatRoute ? (
-                      <RouteFallback label="Loading chat…" />
+                      <RouteFallback label={p.loadingChat} />
                     ) : null
                   ) : chatHostMounted ? (
                     <div
@@ -816,7 +821,7 @@ export default function App() {
                       <Suspense
                         fallback={
                           isChatRoute ? (
-                            <RouteFallback label="Loading chat…" />
+                            <RouteFallback label={p.loadingChat} />
                           ) : null
                         }
                       >
@@ -824,7 +829,7 @@ export default function App() {
                       </Suspense>
                     </div>
                   ) : isChatRoute ? (
-                    <RouteFallback label="Loading chat…" />
+                    <RouteFallback label={p.loadingChat} />
                   ) : null)}
               </div>
               <PluginSlot name="post-main" />
@@ -946,6 +951,7 @@ function SidebarSystemActions({
   tooltipWarmRef,
 }: SidebarSystemActionsProps) {
   const { t } = useI18n();
+  const p = usePageCopy(appEn, appAr);
   const navigate = useNavigate();
   const { activeAction, isBusy, isRunning, pendingAction, runAction } =
     useSystemActions();
@@ -985,14 +991,14 @@ function SidebarSystemActions({
     if (updateConfirmInfo?.behind && updateConfirmInfo.behind > 0) {
       const cmd = updateConfirmInfo.update_command;
       const n = updateConfirmInfo.behind;
-      return `This will run 'hermes update' (${cmd}) and pull ${n} new commit${n === 1 ? "" : "s"}. The gateway restarts when the update finishes; the current session keeps its prompt cache until then.`;
+      return p.updateDescBehind(cmd, n);
     }
     const cmd = updateConfirmInfo?.update_command ?? "hermes update";
     return (
       t.status.updateHermesConfirmMessage ??
       `This will run 'hermes update' (${cmd}) and restart the gateway when it finishes.`
     );
-  }, [t.status.updateHermesConfirmMessage, updateConfirmInfo]);
+  }, [t.status.updateHermesConfirmMessage, updateConfirmInfo, p]);
 
   const items: SystemActionItem[] = [
     {
@@ -1085,7 +1091,7 @@ function SidebarSystemActions({
 
     <ConfirmDialog
       cancelLabel={t.common.cancel}
-      confirmLabel={sharedGateway ? "Restart all" : t.status.restartGateway}
+      confirmLabel={sharedGateway ? p.restartAll : t.status.restartGateway}
       description={
         sharedGateway
           ? sharedGatewayRestartDescription(sharedGateway)
@@ -1098,7 +1104,7 @@ function SidebarSystemActions({
       open={restartConfirmOpen}
       title={
         sharedGateway
-          ? "Restart the shared gateway?"
+          ? p.restartSharedTitle
           : (t.status.restartGatewayConfirmTitle ?? `${t.status.restartGateway}?`)
       }
     />

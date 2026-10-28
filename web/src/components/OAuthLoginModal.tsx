@@ -9,6 +9,9 @@ import { Input } from "@nous-research/ui/ui/components/input";
 import { useI18n } from "@/i18n";
 import { cn, themedBody } from "@/lib/utils";
 import { errorMessage } from "@/lib/api-error";
+import { usePageCopy } from "@/i18n/pages/use-page-copy";
+import { oauthLoginModalEn } from "@/i18n/pages/oauth-login-modal.en";
+import { oauthLoginModalAr } from "@/i18n/pages/oauth-login-modal.ar";
 
 interface Props {
   provider: OAuthProvider;
@@ -39,6 +42,7 @@ export function OAuthLoginModal({ provider, onClose, onSuccess }: Props) {
   const pollTimer = useRef<number | null>(null);
   const copyResetTimer = useRef<number | null>(null);
   const { t } = useI18n();
+  const p = usePageCopy(oauthLoginModalEn, oauthLoginModalAr);
 
   // Initiate flow on mount
   useEffect(() => {
@@ -59,7 +63,7 @@ export function OAuthLoginModal({ provider, onClose, onSuccess }: Props) {
       .catch((e) => {
         if (!isMounted.current) return;
         setPhase("error");
-        setErrorMsg(`Failed to start login: ${errorMessage(e)}`);
+        setErrorMsg(p.failedToStart(errorMessage(e)));
       });
     return () => {
       isMounted.current = false;
@@ -131,18 +135,18 @@ export function OAuthLoginModal({ provider, onClose, onSuccess }: Props) {
           setPhase("approved");
           if (pollTimer.current !== null)
             window.clearInterval(pollTimer.current);
-          onSuccess(`${provider.name} connected`);
+          onSuccess(p.providerConnected(provider.name));
           window.setTimeout(() => isMounted.current && onClose(), 1500);
         } else if (resp.status !== "pending") {
           setPhase("error");
-          setErrorMsg(resp.error_message || `Login ${resp.status}`);
+          setErrorMsg(resp.error_message || p.loginStatus(resp.status));
           if (pollTimer.current !== null)
             window.clearInterval(pollTimer.current);
         }
       } catch (e) {
         if (!isMounted.current) return;
         setPhase("error");
-        setErrorMsg(`Polling failed: ${errorMessage(e)}`);
+        setErrorMsg(p.pollingFailed(errorMessage(e)));
         if (pollTimer.current !== null) window.clearInterval(pollTimer.current);
       }
     }, 2000);
@@ -165,16 +169,16 @@ export function OAuthLoginModal({ provider, onClose, onSuccess }: Props) {
       if (!isMounted.current) return;
       if (resp.ok && resp.status === "approved") {
         setPhase("approved");
-        onSuccess(`${provider.name} connected`);
+        onSuccess(p.providerConnected(provider.name));
         window.setTimeout(() => isMounted.current && onClose(), 1500);
       } else {
         setPhase("error");
-        setErrorMsg(resp.message || "Token exchange failed");
+        setErrorMsg(resp.message || p.tokenExchangeFailed);
       }
     } catch (e) {
       if (!isMounted.current) return;
       setPhase("error");
-      setErrorMsg(`Submit failed: ${errorMessage(e)}`);
+      setErrorMsg(p.submitFailed(errorMessage(e)));
     }
   };
 
@@ -412,7 +416,7 @@ export function OAuthLoginModal({ provider, onClose, onSuccess }: Props) {
                       .catch((e) => {
                         if (!isMounted.current) return;
                         setPhase("error");
-                        setErrorMsg(`${t.common.retry} failed: ${errorMessage(e)}`);
+                        setErrorMsg(p.retryFailed(t.common.retry, errorMessage(e)));
                       });
                   }}
                 >
